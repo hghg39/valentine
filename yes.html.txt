@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Us 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #f5e6c8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+.container {
+  background: #fffaf0;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 360px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.memory {
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: transform 0.4s;
+}
+
+.memory:hover {
+  transform: rotate(-3deg) scale(1.03);
+}
+
+.memory img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(6px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.letterBox {
+  background: #fffdf7;
+  width: 85%;
+  max-width: 400px;
+  padding: 25px;
+  border-radius: 18px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 16px;
+  line-height: 1.6;
+  position: relative;
+}
+
+.backBtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>Our Memories 🤍</h2>
+
+  <div class="memory" onclick="openLetter(1)">
+    <img src="photos/photo1.jpg">
+    <p>Where it all began 🤍</p>
+  </div>
+
+  <div class="memory" onclick="openLetter(2)">
+    <img src="photos/photo2.jpg">
+    <p>The moment everything became real ❤️</p>
+  </div>
+
+  <div class="memory" onclick="openLetter(3)">
+    <img src="photos/photo3.jpg">
+    <p>Always us ✨</p>
+  </div>
+</div>
+
+<div id="letterOverlay" class="overlay">
+  <div class="letterBox">
+    <button class="backBtn" onclick="closeLetter()">← Back</button>
+    <div id="letterText"></div>
+  </div>
+</div>
+
+<div id="finalOverlay" class="overlay">
+  <div class="letterBox">
+    <button class="backBtn" onclick="closeFinal()">← Back</button>
+    <p>Finally bbggg 🥺💗 will you be my Valentine 💌✨</p>
+    <p>I choose you today tomorrow and always 🤍🫶</p>
+  </div>
+</div>
+
+<script>
+const letters = {
+1: `The first time I saw you was back in 8th grade... 🤍`,
+2: `On the evening of 5th Jan I asked you to be my girl 😭❤️`,
+3: `I love you deeply and always will 🤍✨`
+};
+
+let opened = new Set();
+
+function openLetter(id) {
+  document.getElementById("letterText").innerText = letters[id];
+  document.getElementById("letterOverlay").style.display = "flex";
+  opened.add(id);
+  if (opened.size === 3) setTimeout(showFinal, 800);
+}
+
+function closeLetter() {
+  document.getElementById("letterOverlay").style.display = "none";
+}
+
+function showFinal() {
+  document.getElementById("finalOverlay").style.display = "flex";
+}
+
+function closeFinal() {
+  document.getElementById("finalOverlay").style.display = "none";
+}
+</script>
+
+</body>
+</html>

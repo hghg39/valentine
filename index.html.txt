@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💌</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: #f5e6c8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+.card {
+  background: #fffaf0;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+  z-index: 2;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 22px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+#yes {
+  background: #ffb6c1;
+}
+
+#no {
+  background: #ddd;
+  position: absolute;
+}
+
+.heart {
+  position: fixed;
+  bottom: -10px;
+  animation: floatUp 4s linear forwards;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <h1>Will you be my Valentine? 💌✨</h1>
+
+  <div class="buttons">
+    <button id="yes" onclick="goYes()">Yes 💖</button>
+    <button id="no" onmouseover="moveNo()">No 😢</button>
+  </div>
+</div>
+
+<script>
+function moveNo() {
+  const no = document.getElementById("no");
+  no.style.left = Math.random() * 80 + "vw";
+  no.style.top = Math.random() * 80 + "vh";
+}
+
+function goYes() {
+  window.location.href = "yes.html";
+}
+
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerText = "💖";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = "18px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),4000);
+}, 700);
+</script>
+
+</body>
+</html>
