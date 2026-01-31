@@ -81,17 +81,17 @@ body {
   <h2>Our Memories 🤍</h2>
 
   <div class="memory" onclick="openLetter(1)">
-    <img src="photos/photo1.jpg">
+    <img src="photo1.jpg">
     <p>Where it all began 🤍</p>
   </div>
 
   <div class="memory" onclick="openLetter(2)">
-    <img src="photos/photo2.jpg">
+    <img src="photo2.jpg">
     <p>The moment everything became real ❤️</p>
   </div>
 
   <div class="memory" onclick="openLetter(3)">
-    <img src="photos/photo3.jpg">
+    <img src="photo3.jpg">
     <p>Always us ✨</p>
   </div>
 </div>
@@ -155,11 +155,13 @@ Always caring, always trying, always us 🤍✨`
 };
  
 let opened = new Set();
-
 function openLetter(id) {
-  document.getElementById("letterText").innerText = letters[id];
+  document.getElementById("letterText").innerHTML =
+    letters[id].replace(/\n/g, "<br>");
   document.getElementById("letterOverlay").style.display = "flex";
   opened.add(id);
+  if (opened.size === 3) setTimeout(showFinal, 800);
+}
   if (opened.size === 3) setTimeout(showFinal, 800);
 }
 
