@@ -160,9 +160,10 @@ function openLetter(id) {
     letters[id].replace(/\n/g, "<br>");
   document.getElementById("letterOverlay").style.display = "flex";
   opened.add(id);
-  if (opened.size === 3) setTimeout(showFinal, 800);
-}
-  if (opened.size === 3) setTimeout(showFinal, 800);
+
+  if (opened.size === 3) {
+    setTimeout(showFinal, 800);
+  }
 }
 
 function closeLetter() {
